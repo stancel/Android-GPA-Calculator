@@ -12,6 +12,7 @@ package com.processfast.csce492;
 
 //This is Brad commenting code from Shane's setup
 //Brad Rocks!
+//hey!!!!!!!!!!!!!
 
 import android.app.Activity;
 import android.os.Bundle;
