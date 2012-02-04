@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:minSdkVersion="8"/>
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -18,6 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="AddAssignmentTypeActivity"></activity>
+        <activity android:name="AddCourseActivity"></activity>
+        <activity android:name="AddGradeActivity"></activity>
+        <activity android:name="CourseListActivity"></activity>
+        <activity android:name="DeleteAssignmentTypeActivity"></activity>
+        <activity android:name="DeleteCourseActivity"></activity>
+        <activity android:name="DeleteGradeActivity"></activity>
+        <activity android:name="GradingScaleActivity"></activity>
+        <activity android:name="HomeActivity"></activity>
+        <activity android:name="IndividualCourseActivity"></activity>
+        <activity android:name="ModifyAssignmentTypeActivity"></activity>
+        <activity android:name="ModifyCourseActivity"></activity>
+        <activity android:name="ModifyGradeActivity"></activity>
+        <activity android:name="StatisticsActivity"></activity>
     </application>
 
 </manifest>
