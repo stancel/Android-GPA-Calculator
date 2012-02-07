@@ -13,6 +13,13 @@ public final class R {
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
+    public static final class id {
+        public static final int bAddCourse=0x7f050002;
+        public static final int bAddGrade=0x7f050003;
+        public static final int bViewCourses=0x7f050001;
+        public static final int bViewStatistics=0x7f050004;
+        public static final int tvTitle=0x7f050000;
+    }
     public static final class layout {
         public static final int addassignmenttype=0x7f030000;
         public static final int addcourse=0x7f030001;
