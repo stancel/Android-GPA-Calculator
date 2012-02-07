@@ -6,30 +6,48 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements OnClickListener {
 	
-	private View.OnClickListener addCourseListener = new View.OnClickListener(){
-		@Override
-		public void onClick(View v) {
-			Intent i = new Intent(v.getContext(), AddCourseActivity.class);
-			startActivity(i);
-			
+	Button bViewCourses, bAddCourse, bAddGrade, bViewStatistics;
+
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.home);
+		init();
+	}
+
+	//This is an onClick method that is called when one of the buttons is clicked.
+	public void onClick(View view) {
+		//This is the switch case which picks the button that was pressed by its id.
+		switch (view.getId()) {
+		case R.id.bViewCourses:
+			/**Start CourseListActivity.java**/
+			break;
+		case R.id.bAddCourse:
+			/**Start AddCourseActivity.java**/
+			break;
+		case R.id.bAddGrade:
+			/**Start AddGradeActivity.java**/
+			break;		
+		case R.id.bViewStatistics:
+			/**Start StatisticsActivity.java**/
+			break;
 		}
+	}
+	
+	//This is a method to initialize all the variables.
+	public void init() {
+		bViewCourses = (Button) findViewById(R.id.bViewCourses);
+		bAddCourse = (Button) findViewById(R.id.bAddCourse);
+		bAddGrade = (Button) findViewById(R.id.bAddGrade);
+		bViewStatistics = (Button) findViewById(R.id.bViewStatistics);
 		
-	};
-	
-	@Override 
-    public void onCreate(Bundle savedInstanceState) { 
-          super.onCreate(savedInstanceState); 
-          this.setContentView(R.layout.home);  
-          
-          Button addCourse = (Button)findViewById(R.id.bAddCourse);
-          
-          addCourse.setOnClickListener(addCourseListener);
-          
-    } 
-	
-	
+		bViewCourses.setOnClickListener(this);
+		bAddCourse.setOnClickListener(this);
+		bAddGrade.setOnClickListener(this);
+		bViewStatistics.setOnClickListener(this);
+	}
 }
