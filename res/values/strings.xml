@@ -3,5 +3,19 @@
 
     <string name="hello">Hello World, AndroidGPACalculatorActivity!</string>
     <string name="app_name">Android GPA Calculator</string>
+    <string name="add_course">Add Course:</string>
+    <string name="lbl_course_title">Course Title:</string>
+    <string name="lbl_dept_abr">Department Abbreviation:</string>
+    <string name="lbl_course_number">Course Number:</string>
+    <string name="lbl_teacher_name">Teacher Name:</string>
+    <string name="lbl_credit_hours">Credit Hours:</string>
+    <string name="lbl_grading_style">Grading Style:</string>
+    <string name="lbl_percentage">Percentage</string>
+    <string name="lbl_points">Points</string>
+    <string name="lbl_assignment_types">Assignment Types:</string>
+    <string name="none">none</string>
+    <string name="lbl_add_assignment_type">Add Assignment Type</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
 
 </resources>
