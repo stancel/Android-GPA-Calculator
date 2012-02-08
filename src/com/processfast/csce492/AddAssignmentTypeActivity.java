@@ -8,6 +8,9 @@ public class AddAssignmentTypeActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) { 
           super.onCreate(savedInstanceState); 
           this.setContentView(R.layout.addassignmenttype);  
+          //Stephen test
+          
+          
     } 
 
 }
