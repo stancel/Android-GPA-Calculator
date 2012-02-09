@@ -1,5 +1,9 @@
 package com.processfast.csce492;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+
 /**
  * Starting activity file for Group Project
  * Members: Brad Stancel, Byron Alleman,
@@ -13,14 +17,7 @@ package com.processfast.csce492;
 //This is Brad commenting code from Shane's setup
 //Brad Rocks!
 
-import java.util.ArrayList;
-import java.util.List;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.util.Log;
 
 public class AndroidGPACalculatorActivity extends Activity {
 	private CoursesDataSource coursesSource;
@@ -35,10 +32,10 @@ public class AndroidGPACalculatorActivity extends Activity {
         setContentView(R.layout.main);
         
         /* Starts the home screen activity */
-       // Intent toHome = new Intent(this, HomeActivity.class);
-        //this.startActivity(toHome);
+        Intent toHome = new Intent(this, HomeActivity.class);
+        this.startActivity(toHome);
         
-        
+      /*  
        coursesSource = new CoursesDataSource(this);
         coursesSource.open();
         List<Course> courses = coursesSource.getAllCourses();

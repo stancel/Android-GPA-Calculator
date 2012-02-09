@@ -187,7 +187,7 @@
         android:gravity="right" >
 
         <Button
-            android:id="@+id/btn_add_assignment_type"
+            android:id="@+id/bAddAssignmentType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lbl_add_assignment_type" />
@@ -200,7 +200,7 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/btn_cancel"
+            android:id="@+id/bCancel"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:text="@string/cancel" />
@@ -211,7 +211,7 @@
             android:layout_height="match_parent" >
 
             <Button
-                android:id="@+id/btn_submit"
+                android:id="@+id/bSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

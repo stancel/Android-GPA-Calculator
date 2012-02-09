@@ -17,5 +17,11 @@
     <string name="lbl_add_assignment_type">Add Assignment Type</string>
     <string name="cancel">Cancel</string>
     <string name="submit">Submit</string>
+    <string name="lblAddAssignmentType">Add Assignment Type for </string>
+    <string name="empty">null</string>
+    <string name="colon">:</string>
+    <string name="lName">Name:</string>
+    <string name="lWeight">Weight:</string>
+    <string name="lPercent">%</string>
 
 </resources>
