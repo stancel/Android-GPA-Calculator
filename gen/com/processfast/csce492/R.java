@@ -15,10 +15,12 @@ public final class R {
     }
     public static final class id {
         public static final int addCourseText=0x7f050002;
-        public static final int bAddCourse=0x7f050022;
-        public static final int bAddGrade=0x7f050023;
-        public static final int bViewCourses=0x7f050021;
-        public static final int bViewStatistics=0x7f050024;
+        public static final int bAddCourse=0x7f050026;
+        public static final int bAddGrade=0x7f050027;
+        public static final int bCancel=0x7f050022;
+        public static final int bConfirm=0x7f050023;
+        public static final int bViewCourses=0x7f050025;
+        public static final int bViewStatistics=0x7f050028;
         public static final int btn_add_assignment_type=0x7f05001b;
         public static final int btn_cancel=0x7f05001d;
         public static final int btn_submit=0x7f05001f;
@@ -50,7 +52,9 @@ public final class R {
         public static final int radio_points=0x7f050016;
         public static final int relativeLayout1=0x7f05001e;
         public static final int scrollView1=0x7f050000;
-        public static final int tvTitle=0x7f050020;
+        public static final int textView2=0x7f050021;
+        public static final int tvDConfirmT=0x7f050020;
+        public static final int tvTitle=0x7f050024;
     }
     public static final class layout {
         public static final int addassignmenttype=0x7f030000;
