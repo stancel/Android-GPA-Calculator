@@ -17,5 +17,28 @@
     <string name="lbl_add_assignment_type">Add Assignment Type</string>
     <string name="cancel">Cancel</string>
     <string name="submit">Submit</string>
+    <string name="lblAddAssignmentType">Add Assignment Type for </string>
+    <string name="empty">null</string>
+    <string name="colon">:</string>
+    <string name="lName">Name:</string>
+    <string name="lWeight">Weight:</string>
+    <string name="lPercent">%</string>
+    <string name="gradingscale">"Grading Scale for "</string>
+    <string name="scale_message">Leave field blank if letter grade is not applicable to your institution\'s grading system.</string>
+    <string name="percent_and_up">% and up</string>
+    <string name="a">A </string>
+    <string name="a_minus">A- </string>
+    <string name="b_plus">B+ </string>
+    <string name="b">B </string>
+    <string name="b_minus">B- </string>
+    <string name="c_plus">C+ </string>
+    <string name="c">C </string>
+    <string name="c_minus">C- </string>
+    <string name="d_plus">D+ </string>
+    <string name="d">D </string>
+    <string name="d_minus">D- </string>
+    <string name="scale_setup">Grading Scale: </string>
+    <string name="set_up">Set Up</string>
+    
 
 </resources>

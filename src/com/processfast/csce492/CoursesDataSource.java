@@ -99,6 +99,36 @@ public class CoursesDataSource {
 		cursor.moveToFirst();
 		return cursorToCourse(cursor);
 	}
+	public Course addCourseToDatabase(Course c){
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.colDept, c.getDept());
+		values.put(DatabaseHelper.colNumber, c.getNumber());
+		values.put(DatabaseHelper.colTeacher, c.getTeacher());
+		values.put(DatabaseHelper.colHours, c.getHours());
+		values.put(DatabaseHelper.colStyle, c.getStyle());
+		values.put(DatabaseHelper.colA, c.getScale().getA());
+		values.put(DatabaseHelper.colA_minus, c.getScale().getA_minus());
+		values.put(DatabaseHelper.colB_plus, c.getScale().getB_plus());
+		values.put(DatabaseHelper.colB, c.getScale().getB());
+		values.put(DatabaseHelper.colB_minus, c.getScale().getB_minus());
+		values.put(DatabaseHelper.colC_plus, c.getScale().getC_plus());
+		values.put(DatabaseHelper.colC, c.getScale().getC());
+		values.put(DatabaseHelper.colC_minus, c.getScale().getC_minus());
+		values.put(DatabaseHelper.colD_plus, c.getScale().getD_plus());
+		values.put(DatabaseHelper.colD, c.getScale().getD());
+		values.put(DatabaseHelper.colD_minus, c.getScale().getD_minus());
+		
+		long insertId = database.insert(DatabaseHelper.coursesTable, null,
+				values);
+		
+		Log.i("Course", "Course # " + insertId + " added to database.");
+		Cursor cursor = database.query(DatabaseHelper.coursesTable, allColumns,
+				DatabaseHelper.colCourseID + " = " + insertId, null, null,
+				null, null);
+
+		cursor.moveToFirst();
+		return cursorToCourse(cursor);
+	}
 
 	/**
 	 * Deletes a course from the database
@@ -121,8 +151,8 @@ public class CoursesDataSource {
 	public List<Course> getAllCourses() {
 		List<Course> courses = new ArrayList<Course>();
 		Cursor cursor = database.query(DatabaseHelper.coursesTable, allColumns,
-				null, null, DatabaseHelper.colDept, null,
-				DatabaseHelper.colNumber);
+				null, null, null, null,
+				DatabaseHelper.colDept + ", " + DatabaseHelper.colNumber);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			courses.add(cursorToCourse(cursor));
@@ -149,17 +179,17 @@ public class CoursesDataSource {
 		course.setTeacher(cursor.getString(3));
 		course.setHours(cursor.getInt(4));
 		course.setStyle(cursor.getInt(5));
-		course.setA(cursor.getInt(6));
-		course.setA_minus(cursor.getInt(7));
-		course.setB_plus(cursor.getInt(8));
-		course.setB(cursor.getInt(9));
-		course.setB_minus(cursor.getInt(10));
-		course.setC_plus(cursor.getInt(11));
-		course.setC(cursor.getInt(12));
-		course.setC_minus(cursor.getInt(13));
-		course.setD_plus(cursor.getInt(14));
-		course.setD(cursor.getInt(15));
-		course.setD_minus(cursor.getInt(16));
+		course.getScale().setA(cursor.getInt(6));
+		course.getScale().setA_minus(cursor.getInt(7));
+		course.getScale().setB_plus(cursor.getInt(8));
+		course.getScale().setB(cursor.getInt(9));
+		course.getScale().setB_minus(cursor.getInt(10));
+		course.getScale().setC_plus(cursor.getInt(11));
+		course.getScale().setC(cursor.getInt(12));
+		course.getScale().setC_minus(cursor.getInt(13));
+		course.getScale().setD_plus(cursor.getInt(14));
+		course.getScale().setD(cursor.getInt(15));
+		course.getScale().setD_minus(cursor.getInt(16));
 
 		return course;
 	}

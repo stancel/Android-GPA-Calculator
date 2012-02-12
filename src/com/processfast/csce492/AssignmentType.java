@@ -32,6 +32,6 @@ public class AssignmentType {
 	
 	@Override
 	public String toString(){
-		return this.name;
+		return this.id + " " + this.course_id + " " + this.weight + " " + this.name;
 	}
 }

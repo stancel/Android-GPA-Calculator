@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="ASSIGNMENT_TYPE_CREATE" format="integer" type="integer">1</item>
+    <item name="ASSIGNMENT_TYPE_MODIFY" format="integer" type="integer">2</item>
+    <item name="ASSIGNMENT_TYPE_DELETE" format="integer" type="integer">3</item>
+    <item name="COURSE_ADD" format="integer" type="integer">4</item>
+    <item name="COURSE_MODIFY" format="integer" type="integer">5</item>
+    <item name="COURSE_DELETE" format="integer" type="integer">6</item>
+    <item name="GRADE_ADD" format="integer" type="integer">7</item>
+    <item name="GRADE_MODIFY" format="integer" type="integer">8</item>
+    <item name="GRADE_DELETE" format="integer" type="integer">9</item>
+    <item name="SCALE_SETUP" format="integer" type="integer">10</item>
+    <item name="STYLE_PERCENTAGE" format="integer" type="integer">11</item>
+    <item name="STYLE_POINTS" format="integer" type="integer">12</item>
+
+</resources>
