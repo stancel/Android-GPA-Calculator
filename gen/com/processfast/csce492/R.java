@@ -15,13 +15,18 @@ public final class R {
     }
     public static final class id {
         public static final int addCourseText=0x7f050002;
-        public static final int bAddCourse=0x7f050022;
-        public static final int bAddGrade=0x7f050023;
-        public static final int bViewCourses=0x7f050021;
-        public static final int bViewStatistics=0x7f050024;
+        public static final int bAddCourse=0x7f05002b;
+        public static final int bAddGrade=0x7f05002c;
+        public static final int bViewCourses=0x7f05002a;
+        public static final int bViewStatistics=0x7f05002d;
+        public static final int btn_AG_Cancel=0x7f050028;
+        public static final int btn_AG_Submit=0x7f050027;
         public static final int btn_add_assignment_type=0x7f05001b;
         public static final int btn_cancel=0x7f05001d;
         public static final int btn_submit=0x7f05001f;
+        public static final int et_AG_denominator=0x7f050026;
+        public static final int et_AG_name=0x7f050022;
+        public static final int et_AG_numirator=0x7f050025;
         public static final int field_assignment_types=0x7f050019;
         public static final int field_course_number=0x7f05000b;
         public static final int field_course_title=0x7f050005;
@@ -50,7 +55,11 @@ public final class R {
         public static final int radio_points=0x7f050016;
         public static final int relativeLayout1=0x7f05001e;
         public static final int scrollView1=0x7f050000;
-        public static final int tvTitle=0x7f050020;
+        public static final int spinner_AG_course=0x7f050023;
+        public static final int spinner_AG_type=0x7f050024;
+        public static final int textView1=0x7f050020;
+        public static final int textview1=0x7f050021;
+        public static final int tvTitle=0x7f050029;
     }
     public static final class layout {
         public static final int addassignmenttype=0x7f030000;
