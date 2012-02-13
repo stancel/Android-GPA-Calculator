@@ -1,15 +1,12 @@
 package com.processfast.csce492;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class HomeActivity extends Activity implements OnClickListener {
+public class HomeActivity extends Activity implements View.OnClickListener {
 	
 	Button bViewCourses, bAddCourse, bAddGrade, bViewStatistics;
 
@@ -28,6 +25,8 @@ public class HomeActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.bAddCourse:
 			/**Start AddCourseActivity.java**/
+			Intent i = new Intent(this, AddCourseActivity.class);
+			startActivity(i);
 			break;
 		case R.id.bAddGrade:
 			/**Start AddGradeActivity.java**/

@@ -27,22 +27,6 @@
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/lbl_course_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_course_title"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <EditText
-                android:id="@+id/field_course_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.85" >
-
-                <requestFocus />
-            </EditText>
         </LinearLayout>
 
         <LinearLayout
@@ -181,10 +165,30 @@
             android:gravity="right" >
 
             <Button
-                android:id="@+id/btn_add_assignment_type"
+                android:id="@+id/bAddAssignmentType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_add_assignment_type" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout11"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/scale_setup"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Button
+                android:id="@+id/bSetUpScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/set_up" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -193,7 +197,7 @@
             android:layout_height="wrap_content" >
 
             <Button
-                android:id="@+id/btn_cancel"
+                android:id="@+id/bCancel"
                 android:layout_width="164dp"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel" />
@@ -204,7 +208,7 @@
                 android:layout_height="match_parent" >
 
                 <Button
-                    android:id="@+id/btn_submit"
+                    android:id="@+id/bSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -214,4 +218,5 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>

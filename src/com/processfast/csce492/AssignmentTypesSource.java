@@ -55,6 +55,22 @@ public class AssignmentTypesSource {
 		return cursorToAssignmentType(cursor);
 	}
 	
+	
+	public AssignmentType addAssignmentTypeToDatabase(AssignmentType t){
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.colTypeCourseID, t.getCourse_id());
+		values.put(DatabaseHelper.colWeight, t.getWeight());
+		values.put(DatabaseHelper.colName, t.getName());
+		
+		long insertId = database.insert(DatabaseHelper.assignmentTypesTable, null, values);
+		
+		Log.i("AssignmentType", "Assignment Type \"" + t.getName() + "\" added to the database.");
+		
+		Cursor cursor = database.query(DatabaseHelper.assignmentTypesTable, allColumns,
+				DatabaseHelper.colCourseID + " = " + insertId, null, null, null, null);
+		cursor.moveToFirst();
+		return cursorToAssignmentType(cursor);
+	}
 	/**
 	 * Deletes an AssignmentType from the database
 	 * 
