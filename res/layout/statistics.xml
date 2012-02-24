@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Statistics"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:stretchColumns="*" >
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of credits
+this semester:"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_STAT_credits"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cumulative GPA:"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_STAT_GPA"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grades Added:"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_STAT_NumberOfGrades"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usage Frequency:"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_STAT_UsageFreq"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btn_STAT_Home"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/home" />
+
 </LinearLayout>

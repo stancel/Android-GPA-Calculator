@@ -30,6 +30,7 @@ public final class R {
         public static final int bViewStatistics=0x7f07005c;
         public static final int btn_AG_Cancel=0x7f07002f;
         public static final int btn_AG_Submit=0x7f07002e;
+        public static final int btn_STAT_Home=0x7f070063;
         public static final int course_title=0x7f070032;
         public static final int et_AG_denominator=0x7f07002d;
         public static final int et_AG_name=0x7f070029;
@@ -52,6 +53,7 @@ public final class R {
         public static final int field_credit_hours=0x7f070019;
         public static final int field_dept_abr=0x7f070012;
         public static final int field_teacher_name=0x7f070016;
+        public static final int imageView1=0x7f070061;
         public static final int lColon=0x7f070003;
         public static final int lCourse=0x7f070002;
         public static final int lPercent=0x7f07000a;
@@ -83,6 +85,7 @@ public final class R {
         public static final int scrollView1=0x7f07000e;
         public static final int spinner_AG_course=0x7f07002a;
         public static final int spinner_AG_type=0x7f07002b;
+        public static final int tableRow1=0x7f070060;
         public static final int textView1=0x7f070000;
         public static final int textView10=0x7f070042;
         public static final int textView11=0x7f070045;
@@ -110,6 +113,10 @@ public final class R {
         public static final int textview1=0x7f070028;
         public static final int tvDConfirmT=0x7f070030;
         public static final int tvTitle=0x7f070058;
+        public static final int tv_STAT_GPA=0x7f07005e;
+        public static final int tv_STAT_NumberOfGrades=0x7f07005f;
+        public static final int tv_STAT_UsageFreq=0x7f070062;
+        public static final int tv_STAT_credits=0x7f07005d;
     }
     public static final class integer {
         public static final int ASSIGNMENT_TYPE_CREATE=0x7f050000;
@@ -161,6 +168,7 @@ public final class R {
         public static final int empty=0x7f060011;
         public static final int gradingscale=0x7f060016;
         public static final int hello=0x7f060000;
+        public static final int home=0x7f060026;
         public static final int lName=0x7f060013;
         public static final int lPercent=0x7f060015;
         public static final int lWeight=0x7f060014;
