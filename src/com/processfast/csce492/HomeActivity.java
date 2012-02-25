@@ -18,14 +18,16 @@ public class HomeActivity extends Activity implements View.OnClickListener {
 
 	//This is an onClick method that is called when one of the buttons is clicked.
 	public void onClick(View view) {
+		Intent i;
 		//This is the switch case which picks the button that was pressed by its id.
 		switch (view.getId()) {
 		case R.id.bViewCourses:
-			/**Start CourseListActivity.java**/
+			i = new Intent(this, CourseListActivity.class);
+			startActivity(i);
 			break;
 		case R.id.bAddCourse:
 			/**Start AddCourseActivity.java**/
-			Intent i = new Intent(this, AddCourseActivity.class);
+			i = new Intent(this, AddCourseActivity.class);
 			startActivity(i);
 			break;
 		case R.id.bAddGrade:

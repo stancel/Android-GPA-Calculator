@@ -211,4 +211,41 @@ public class GradingScale implements Parcelable {
 		}
 
 	};
+	
+	public String getLetterGrade(float g){
+		if(g > a){
+			return "A";
+		}
+		else if(a_minus > 0 && g > a_minus){
+			return "A-";
+		}
+		else if(b_plus > 0 && g > b_plus){
+			return "B+";
+		}
+		else if(g > b){
+			return "B";
+		}
+		else if(b_minus > 0 && g > b_minus){
+			return "B-";
+		}
+		else if(c_plus > 0 && g > c_plus){
+			return "C+";
+		}
+		else if(g > c){
+			return "C";
+		}
+		else if(c_minus > 0 && g > c_minus){
+			return "C-";
+		}
+		else if(d_plus > 0 && g > d_plus){
+			return "D+";
+		}
+		else if(g > d){
+			return "D";
+		}
+		else if(d_minus > 0 && g > d_minus){
+			return "D-";
+		}
+		else return "F";
+	}
 }

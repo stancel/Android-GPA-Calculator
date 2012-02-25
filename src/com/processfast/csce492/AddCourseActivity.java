@@ -1,9 +1,9 @@
 package com.processfast.csce492;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,22 +12,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 public class AddCourseActivity extends Activity implements View.OnClickListener {
 
 	Button bAddAssignmentType, bSetUpScale, bCancel, bSubmit;
+	RadioGroup radios;
+	RadioButton percentage, point;
 	EditText fAbbr, fNumber, fTeacher, fHours;
 	ArrayList<AssignmentType> assignmentTypes;
 	Course course;
 	GradingScale scale;
 	TextView types;
+	AlertDialog errorMessage;
+	int gradingStyle;
 
 	private CoursesDataSource courseSource;
 	private AssignmentTypesSource typeSource;
-
-	// TODO remove this after code is connected to other screens
-	int testCourseId = 5;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,12 +41,22 @@ public class AddCourseActivity extends Activity implements View.OnClickListener 
 	@Override
 	// This is an onClick method that is called when one of the buttons is
 	// clicked.
+	
 	public void onClick(View view) {
+		String courseName = fAbbr.getText().toString() + " " + fNumber.getText().toString();
 		// This is the switch case which picks the button that was pressed by
 		// its id.
 		switch (view.getId()) {
 		case R.id.bAddAssignmentType:
 			Intent assType = new Intent(this, AddAssignmentTypeActivity.class);
+
+			if (radios.getCheckedRadioButtonId() == point.getId()) {
+				assType.putExtra("style", R.integer.STYLE_POINTS);
+			} else {
+				assType.putExtra("style", R.integer.STYLE_PERCENTAGE);
+			}
+			
+			assType.putExtra("courseName", courseName);
 
 			// Add the course activity to the intent
 			startActivityForResult(assType, R.integer.ASSIGNMENT_TYPE_CREATE);
@@ -56,6 +68,7 @@ public class AddCourseActivity extends Activity implements View.OnClickListener 
 
 			Log.i("General", "Sending scale to the Scale Setup activity.");
 			scaleSetUp.putExtra("scale", scale);
+			scaleSetUp.putExtra("courseName", courseName);
 
 			startActivityForResult(scaleSetUp, R.integer.SCALE_SETUP);
 
@@ -66,69 +79,61 @@ public class AddCourseActivity extends Activity implements View.OnClickListener 
 			break;
 
 		case R.id.bSubmit:
-			// TODO Add Validation code
-			Course course = new Course();
-
-			course.setDept(fAbbr.getText().toString());
-			course.setNumber(fNumber.getText().toString());
-			course.setTeacher(fTeacher.getText().toString());
-			course.setHours(Integer.parseInt(fHours.getText().toString()));
-			int style;
-
-			RadioGroup group1 = (RadioGroup) findViewById(R.id.radioGroup1);
-			RadioButton checked = (RadioButton) group1.findViewById(group1
-					.getCheckedRadioButtonId());
-			if (checked.getId() == R.id.radio_percentage) {
-				style = R.integer.STYLE_PERCENTAGE;
-			} else {
-				style = R.integer.STYLE_POINTS;
+			if (validateCourse()) {
+				storeCourseInformation();
+				finish();
 			}
-			course.setStyle(style);
-
-			// TODO Add grading scale
-			course.setScale(scale);
-
-			courseSource.open();
-//			courseSource.createCourse(course.getDept(), course.getNumber(),
-//					course.getTeacher(), course.getHours(), course.getStyle(),
-//					course.getScale().getA(), course.getScale().getA_minus(),
-//					course.getScale().getB_plus(), course.getScale().getB(),
-//					course.getScale().getB_minus(), course.getScale()
-//							.getC_plus(), course.getScale().getC(), course
-//							.getScale().getC_minus(), course.getScale()
-//							.getD_plus(), course.getScale().getD(), course
-//							.getScale().getD_minus());
-			course = courseSource.addCourseToDatabase(course);
-			//courseSource.close();
-
-			typeSource.open();
-			for (int i = 0; i < assignmentTypes.size(); i++) {
-				assignmentTypes.get(i).setCourse_id(course.getId());
-				typeSource.addAssignmentTypeToDatabase(assignmentTypes.get(i));
-			}
-			
-
-			//courseSource.open();
-			List<Course> courses = courseSource.getAllCourses();
-
-			for (int i = 0; i < courses.size(); i++) {
-				Log.i("General", courses.get(i).toString());
-				List<AssignmentType> t = typeSource.getAllAssignmentTypesForCourse(courses.get(i).getId());
-				for(int j = 0; j < t.size(); j ++){
-					Log.i("General", t.get(j).toString());
-				}
-			}
-			courseSource.close();
-			typeSource.close();
-
-			finish();
-			// Add course to database
-
 			break;
 		}
 
 	}
 
+	private boolean validateCourse() {
+		String errors = "You have made the following error(s): \n";
+		boolean inputError = false;
+		// ensure dept abbreviation is not blank
+
+		if (fAbbr.getText().toString().length() == 0) {
+			errors += "-Department Abbreviation cannot be left blank.\n";
+			inputError = true;
+		}
+
+		// ensure course number is not blank
+		if (fNumber.getText().toString().length() == 0) {
+			errors += "-Course number cannot be left blank.\n";
+			inputError = true;
+		}
+		/*
+		 * Ensure assignment type weights add up to 100% or 0% for percentage
+		 * based courses
+		 */
+		if (gradingStyle == R.integer.STYLE_PERCENTAGE) {
+			int weightSum = 0;
+			for (int i = 0; i < assignmentTypes.size(); ++i) {
+				weightSum += assignmentTypes.get(i).getWeight();
+			}
+			if (weightSum != 0 && weightSum != 100) {
+				errors += "-Assignment type weights must add up to 100%. \n";
+				inputError = true;
+			}
+		}
+
+		// Ensure grading scale is set up.
+		if (!scale.isValidScale()) {
+			errors += "-Grading scale must be set up.\n";
+			inputError = true;
+		}
+
+		if (inputError == true) {
+			errorMessage.setMessage(errors);
+			errorMessage.show();
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case R.integer.ASSIGNMENT_TYPE_CREATE:
@@ -173,9 +178,15 @@ public class AddCourseActivity extends Activity implements View.OnClickListener 
 		fTeacher = (EditText) findViewById(R.id.field_teacher_name);
 		fHours = (EditText) findViewById(R.id.field_credit_hours);
 
+		radios = (RadioGroup) findViewById(R.id.radioGroup1);
+
+		percentage = (RadioButton) findViewById(R.id.radio_percentage);
+		point = (RadioButton) findViewById(R.id.radio_points);
+
 		courseSource = new CoursesDataSource(this);
 		typeSource = new AssignmentTypesSource(this);
 
+		gradingStyle = R.integer.STYLE_PERCENTAGE;
 		bAddAssignmentType.setOnClickListener(this);
 		bCancel.setOnClickListener(this);
 		bSubmit.setOnClickListener(this);
@@ -188,5 +199,63 @@ public class AddCourseActivity extends Activity implements View.OnClickListener 
 
 		scale = new GradingScale();
 
+		errorMessage = new AlertDialog.Builder(this).create();
+		errorMessage.setTitle("Input error!");
+		errorMessage.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				return;
+			}
+		});
+
+		/*
+		 * This ensures that if the course grading style is changed the
+		 * assignment types are cleared.
+		 */
+		radios.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				assignmentTypes.clear();
+				types.setText(R.string.none);
+				RadioGroup group1 = (RadioGroup) findViewById(R.id.radioGroup1);
+				RadioButton checked = (RadioButton) group1.findViewById(group1
+						.getCheckedRadioButtonId());
+				if (checked.getId() == R.id.radio_percentage) {
+					gradingStyle = R.integer.STYLE_PERCENTAGE;
+				} else {
+					gradingStyle = R.integer.STYLE_POINTS;
+				}
+			}
+		});
+
+	}
+
+	public void storeCourseInformation() {
+		Course course = new Course();
+
+		course.setDept(fAbbr.getText().toString());
+		course.setNumber(fNumber.getText().toString());
+		course.setTeacher(fTeacher.getText().toString());
+		course.setHours(Integer.parseInt(fHours.getText().toString().trim()));
+
+		course.setStyle(gradingStyle);
+
+		// Add grading scale
+		course.setScale(scale);
+
+		// Add the course to the database
+		courseSource.open();
+		course = courseSource.addCourseToDatabase(course);
+		courseSource.close();
+
+		// Add the assignment types to the database
+		typeSource.open();
+		for (int i = 0; i < assignmentTypes.size(); i++) {
+			assignmentTypes.get(i).setCourse_id(course.getId());
+			typeSource.addAssignmentTypeToDatabase(assignmentTypes.get(i));
+		}
+
+		typeSource.close();
+		
 	}
 }
