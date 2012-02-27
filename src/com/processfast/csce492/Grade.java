@@ -1,6 +1,9 @@
 package com.processfast.csce492;
 
-public class Grade {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Grade implements Parcelable{
 	private int id;
 	private int assignment_type_id;
 	private int course_id;
@@ -9,6 +12,19 @@ public class Grade {
 	private float grade;
 	private String date;
 	
+	public Grade(){
+		
+	}
+	
+	public Grade(Parcel source) {
+		id = source.readInt();
+		assignment_type_id = source.readInt();
+		course_id = source.readInt();
+		max_grade = source.readFloat();
+		name = source.readString();
+		grade = source.readFloat();
+		date = source.readString();
+	}
 	public int getId() {
 		return id;
 	}
@@ -55,4 +71,34 @@ public class Grade {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	@Override
+	public int describeContents() {
+
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(id);
+		dest.writeInt(assignment_type_id);
+		dest.writeInt(course_id);
+		dest.writeFloat(max_grade);
+		dest.writeString(name);
+		dest.writeFloat(grade);
+		dest.writeString(date);
+	}
+	
+
+	public static final Parcelable.Creator<Grade> CREATOR = new Parcelable.Creator<Grade>() {
+
+		@Override
+		public Grade createFromParcel(Parcel source) {
+			return new Grade(source);
+		}
+
+		@Override
+		public Grade[] newArray(int size) {
+			return new Grade[size];
+		}
+
+	};
 }

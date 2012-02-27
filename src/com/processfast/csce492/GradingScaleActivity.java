@@ -1,7 +1,5 @@
 package com.processfast.csce492;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +14,7 @@ import android.widget.TextView;
 public class GradingScaleActivity extends Activity implements
 		View.OnClickListener {
 	Button bScaleSubmit;
+	String courseName;
 	
 	EditText a, a_minus, b_plus, b, b_minus, c_plus, c, c_minus, d_plus, d, d_minus;
 	String errors;
@@ -32,7 +31,6 @@ public class GradingScaleActivity extends Activity implements
 	@Override
 	public void onClick(View v) {
 		Log.i("General", "Submit button pressed.");
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.bScaleSubmit:
 			Log.i("General", "Submit button pressed.");
@@ -92,6 +90,15 @@ public class GradingScaleActivity extends Activity implements
 		d_minus = (EditText)findViewById(R.id.fScale_d_minus);
 
 		scale = (GradingScale) getIntent().getParcelableExtra("scale");
+		
+		courseName = getIntent().getStringExtra("courseName");
+		
+		if(courseName.equalsIgnoreCase(" ")){
+			((TextView)findViewById(R.id.course_title)).setText(R.string.new_course);
+		}
+		else{
+			((TextView)findViewById(R.id.course_title)).setText(courseName);
+		}
 		initializeTextFields();
 
 		errors = "";

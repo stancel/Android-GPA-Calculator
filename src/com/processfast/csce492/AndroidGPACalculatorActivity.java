@@ -1,5 +1,8 @@
 package com.processfast.csce492;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +37,30 @@ public class AndroidGPACalculatorActivity extends Activity {
         /* Starts the home screen activity */
         Intent toHome = new Intent(this, HomeActivity.class);
         this.startActivity(toHome);
+        
+        
+        // Below is test code to use while the list Courses activity is not functional
+        coursesSource = new CoursesDataSource(this);
+        coursesSource.open();
+        typeSource = new AssignmentTypesSource(this);
+        typeSource.open();
+        List<Course> courses = coursesSource.getAllCourses();
+        
+        for (int i = 0; i < courses.size(); ++i){
+        	System.out.println("Course Info: " + courses.get(i).toString());
+        	
+        	// Assignment Types
+        	
+        	int courseID = courses.get(i).getId();
+        	
+        	List<AssignmentType> types = typeSource.getAllAssignmentTypesForCourse(courseID);
+        	
+        	for (int j = 0; j < types.size(); ++j){
+        		System.out.println("\t" + types.get(j).toString());
+        	}
+        }
+        typeSource.close();
+        coursesSource.close();
         
       /*  
        coursesSource = new CoursesDataSource(this);

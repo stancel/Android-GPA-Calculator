@@ -39,8 +39,11 @@
     <string name="d_minus">D- </string>
     <string name="scale_setup">Grading Scale: </string>
     <string name="set_up">Set Up</string>
-    <string name="home">Home</string>
-
+    <string name="lPoints">points</string>
+    <string name="new_course">new course</string>
+    <string name="lbl_courses">Courses:</string>
+    <string name="lbl_add_course_button">Add Course</string>
+    <string name="lbl_home_button">Home</string>
     
 
 </resources>
