@@ -8,5 +8,7 @@ public class IndividualCourseActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) { 
           super.onCreate(savedInstanceState); 
           this.setContentView(R.layout.individualcourse);  
+          
+          System.out.println(getIntent().getIntExtra("id", -1));
     } 
 }

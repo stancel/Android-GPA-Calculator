@@ -5,8 +5,11 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -61,13 +64,33 @@ public class CourseListActivity extends Activity implements
 
 			private void onListItemClick(View v, int pos, long id) {
 				System.out.println("onListItemClick id=" + id);
-				// TODO continue here.
+				Intent i;
+				i = new Intent(getApplicationContext(), IndividualCourseActivity.class);
+				i.putExtra("id", courseList.get(pos).getId());
+				startActivity(i);
 			}
 			
 		});
+		
+		registerForContextMenu(list);
 		source.close();
 	}
-
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo){
+		if(v.getId() == R.id.courseList){
+			AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+			
+			menu.setHeaderTitle(courseList.get(info.position).getDept() + " " + courseList.get(info.position).getNumber());
+			
+			String[] menuItems = getResources().getStringArray(R.array.menu);
+			
+			for(int i = 0; i < menuItems.length; i ++){
+				menu.add(Menu.NONE, i, i, menuItems[i]);
+			}
+		
+		}
+	}
 	@Override
 	public void onClick(View v) {
 		Intent i;
@@ -87,15 +110,21 @@ public class CourseListActivity extends Activity implements
 
 	}
 	
-	
-	public void refreshList(){
-		source.open();
-		courseList = source.getAllCourses();
-		list = (ListView) findViewById(R.id.courseList);
+	@Override
+    public boolean onContextItemSelected(MenuItem item) {
+	    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+	    int menuItemIndex = item.getItemId();
+		String[] menuItems = getResources().getStringArray(R.array.menu);
+		String menuItemName = menuItems[menuItemIndex];
+	    String listItemId = courseList.get(info.position).getId()+"";
 
-		ArrayAdapter<Course> adapter = new ArrayAdapter<Course> (this, android.R.layout.simple_list_item_1,
-				android.R.id.text1, courseList);
-		list.setAdapter(adapter);
-		source.close();
-	}
+	    if (menuItemName == "Edit"){
+	    	//TODO Move to course edit
+	    }
+	    if (menuItemName == "Delete"){
+	    	//TODO move to course delete
+	    }
+	    System.out.println(String.format("Selected %s for item %s", menuItemName, listItemId));
+    	return true;
+    }
 }
