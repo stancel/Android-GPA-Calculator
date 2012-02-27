@@ -143,6 +143,19 @@ public class CoursesDataSource {
 		database.delete(DatabaseHelper.coursesTable, DatabaseHelper.colCourseID
 				+ " = " + id, null);
 	}
+	
+	/**
+	 * Deletes a course from the database by the course's id number
+	 * 
+	 * @author Byron Alleman
+	 * @param id
+	 *            The id of the course to be deleted
+	 */
+	public void deleteCourse(int id) {
+		Log.i("Course", "Course # " + id + " is deleted.");
+		database.delete(DatabaseHelper.coursesTable, DatabaseHelper.colCourseID
+				+ " = " + id, null);
+	}
 
 	/**
 	 * @author Byron Alleman

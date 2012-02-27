@@ -1,44 +1,53 @@
 package com.processfast.csce492;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class DeleteCourseActivity extends Activity implements OnClickListener {
-	
-	
+	CoursesDataSource courseSource;
+
 	Button bCancel, bConfirm;
 	
-    public void onCreate(Bundle savedInstanceState) { 
-          super.onCreate(savedInstanceState); 
-          this.setContentView(R.layout.deletecourse);  
-          
-          bCancel = (Button)	findViewById(R.id.bCancel);
-          bCancel.setOnClickListener(new OnClickListener()
-          {
-        	  public void onClick(View view){
-        		  //code to return to previous screen and not delete
-        		  System.out.println("Test for the Cancel button.");
-        	  }
-          });
-          
-  		  bConfirm = (Button) findViewById(R.id.bConfirm);
-  		  bConfirm.setOnClickListener(new OnClickListener()
-  		  {
-  			  public void onClick(View view){
-  				  //code to delete course from db  
-  				  System.out.println("Test for the Confirm button.");
-  			  }
-  		  });
-    }
+	int id;
+
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.deletecourse);
+
+		init();
+	}
 
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
+	public void init() {
+
+		id = getIntent().getIntExtra("id", -1);
+		courseSource = new CoursesDataSource(this);
+		courseSource.open();
+
+		bCancel = (Button) findViewById(R.id.bCancel);
+		bCancel.setOnClickListener(new OnClickListener() {
+			public void onClick(View view) {
+				finish();
+			}
+		});
+
+		bConfirm = (Button) findViewById(R.id.bConfirm);
+		bConfirm.setOnClickListener(new OnClickListener() {
+			public void onClick(View view) {
+				courseSource.deleteCourse(id);
+				Intent returnIntent = new Intent();
+				setResult(RESULT_OK, returnIntent);
+				finish();
+			}
+		});
+	}
 
 }
