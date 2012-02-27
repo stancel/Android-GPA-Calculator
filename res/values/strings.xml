@@ -39,6 +39,8 @@
     <string name="d_minus">D- </string>
     <string name="scale_setup">Grading Scale: </string>
     <string name="set_up">Set Up</string>
+    <string name="home">Home</string>
+
     
 
 </resources>
