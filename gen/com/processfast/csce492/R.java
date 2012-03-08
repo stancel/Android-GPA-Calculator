@@ -32,9 +32,13 @@ public final class R {
         public static final int bViewCourses=0x7f080054;
         public static final int bViewStatistics=0x7f080057;
         public static final int btn_add_course=0x7f080029;
+        public static final int btn_back=0x7f08005c;
         public static final int btn_home=0x7f08002a;
+        public static final int content=0x7f080058;
         public static final int courseList=0x7f080028;
         public static final int course_title=0x7f08002d;
+        public static final int coursetitle=0x7f080059;
+        public static final int currentaverage=0x7f08005a;
         public static final int fName=0x7f080006;
         public static final int fScale_a=0x7f08002f;
         public static final int fScale_a_minus=0x7f080032;
@@ -108,6 +112,7 @@ public final class R {
         public static final int textView9=0x7f08003a;
         public static final int tvDConfirmT=0x7f08002b;
         public static final int tvTitle=0x7f080053;
+        public static final int typelayout=0x7f08005b;
     }
     public static final class integer {
         public static final int ASSIGNMENT_TYPE_CREATE=0x7f060000;
@@ -143,11 +148,13 @@ public final class R {
     public static final class string {
         public static final int a=0x7f070019;
         public static final int a_minus=0x7f07001a;
+        public static final int add_assignment_type=0x7f07002b;
         public static final int add_course=0x7f070002;
         public static final int app_name=0x7f070001;
         public static final int b=0x7f07001c;
         public static final int b_minus=0x7f07001d;
         public static final int b_plus=0x7f07001b;
+        public static final int back=0x7f07002c;
         public static final int c=0x7f07001f;
         public static final int c_minus=0x7f070020;
         public static final int c_plus=0x7f07001e;

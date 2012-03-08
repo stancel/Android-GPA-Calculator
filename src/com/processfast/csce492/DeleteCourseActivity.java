@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class DeleteCourseActivity extends Activity implements OnClickListener {
+public class DeleteCourseActivity extends Activity {
 	CoursesDataSource courseSource;
 
 	Button bCancel, bConfirm;
@@ -21,10 +21,6 @@ public class DeleteCourseActivity extends Activity implements OnClickListener {
 		init();
 	}
 
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public void init() {
 

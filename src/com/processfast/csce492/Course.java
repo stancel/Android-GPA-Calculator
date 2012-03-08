@@ -116,4 +116,8 @@ public class Course implements Parcelable{
 		// TODO algorithms
 		return "";
 	}
+	public String getCourseTitle(){
+		
+		return this.getDept() + " " + this.getNumber();
+	}
 }

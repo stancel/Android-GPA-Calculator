@@ -5,7 +5,6 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -19,11 +18,12 @@ import android.widget.ListView;
 public class CourseListActivity extends Activity implements
 		View.OnClickListener {
 
-	List<Course> courseList;
+	List<Course> courseList;  // Contains the list of courses
 
-	ArrayAdapter<Course> adapter;
+	ArrayAdapter<Course> adapter;  // An adapter to facilitate placing the information
+									// from the course list to the listView
 
-	CoursesDataSource source;
+	CoursesDataSource source; 
 
 	Button addCourse, home;
 
@@ -89,14 +89,12 @@ public class CourseListActivity extends Activity implements
 		switch (requestCode) {
 		case R.integer.COURSE_DELETE:
 			if (resultCode == RESULT_OK) {
-				// TODO make it so the list is automatically updated
 				updateList();
 
 			}
 			break;
-		case R.integer.SCALE_SETUP:
+		case R.integer.COURSE_ADD:
 			if (resultCode == RESULT_OK) {
-				// TODO make it so the list is automatically updated
 				updateList();
 			}
 			break;
@@ -120,7 +118,7 @@ public class CourseListActivity extends Activity implements
 		if (menuItemName.equals("Delete")) {
 			System.out.println("Delete course");
 			i = new Intent(this, DeleteCourseActivity.class);
-			i.putExtra("id", listItemId);
+			i.putExtra("id", listItemId);  //TODO possibly convert to tags instead of extras
 			startActivityForResult(i, R.integer.COURSE_DELETE);
 		}
 		System.out.println(String.format("Selected %s for item %s",

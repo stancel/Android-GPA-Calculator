@@ -74,9 +74,9 @@ public class AssignmentType implements Parcelable{
 	};
 	
 	public String getAssignmentTypeAverage(){
-		
+		String average = "N/A";
 		// TODO calculate average for this assignment type
-		return "";
+		return this.getName() + "Average: " + average;
 		
 	}
 }

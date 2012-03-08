@@ -1,6 +1,5 @@
 package com.processfast.csce492;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -25,7 +24,6 @@ import android.os.Bundle;
 public class AndroidGPACalculatorActivity extends Activity {
 	private CoursesDataSource coursesSource;
 	private AssignmentTypesSource typeSource;
-	private GradesDataSource gradeSource;
 	
 	
     /** Called when the activity is first created. */

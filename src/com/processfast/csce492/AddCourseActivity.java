@@ -81,6 +81,8 @@ public class AddCourseActivity extends Activity implements View.OnClickListener 
 		case R.id.bSubmit:
 			if (validateCourse()) {
 				storeCourseInformation();
+				Intent returnIntent = new Intent();
+				setResult(RESULT_OK, returnIntent);
 				finish();
 			}
 			break;
