@@ -63,7 +63,7 @@ public class Grade implements Parcelable{
 	}
 	@Override
 	public String toString(){
-		return this.name;
+		return "\t\t" + this.name + "\t" + getGrade() + "/" + getMax_grade();
 	}
 	public String getDate() {
 		return date;
@@ -71,6 +71,7 @@ public class Grade implements Parcelable{
 	public void setDate(String date) {
 		this.date = date;
 	}
+
 	@Override
 	public int describeContents() {
 

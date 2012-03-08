@@ -177,6 +177,19 @@ public class CoursesDataSource {
 	}
 
 	/**
+	 * @param courseID the id of the course being returned
+	 * @return the course associated with the id
+	 */
+	public Course getCourseByID(int courseID){
+		Course course = new Course();
+		Cursor cursor = database.query(DatabaseHelper.coursesTable, allColumns,
+				DatabaseHelper.colCourseID + "=?", new String[]{courseID+""}, null, null, null);
+		cursor.moveToFirst();
+		course = cursorToCourse(cursor);
+		
+		return course;
+	}
+	/**
 	 * This method returns the Course object that a passed Cursor object points
 	 * to.
 	 * 
