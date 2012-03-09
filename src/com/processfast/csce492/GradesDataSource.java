@@ -55,7 +55,7 @@ public class GradesDataSource {
 		long insertId = database.insert(DatabaseHelper.gradesTable, null,
 				values);
 
-		Log.i("Grade", "Grade \"" + name + "\" added to database.");
+		Log.i("Grade", "Grade \"" + name + "\" added to database with insert id of "+ insertId +".");
 		Cursor cursor = database.query(DatabaseHelper.gradesTable, allColumns,
 				DatabaseHelper.colGradeID + " = " + insertId, null, null, null,
 				null);
@@ -90,6 +90,19 @@ public class GradesDataSource {
 		List<Grade> courses = new ArrayList<Grade>();
 		Cursor cursor = database.query(DatabaseHelper.gradesTable, allColumns, 
 				DatabaseHelper.colGradeTypeID + " = " + type, null, null, null, DatabaseHelper.colGradeDate);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			courses.add(cursorToGrade(cursor));
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return courses;
+
+	}
+	public List<Grade> getAllGrades() {
+		List<Grade> courses = new ArrayList<Grade>();
+		Cursor cursor = database.query(DatabaseHelper.gradesTable, allColumns, 
+				null, null, null, null, DatabaseHelper.colGradeDate);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			courses.add(cursorToGrade(cursor));

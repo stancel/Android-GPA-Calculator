@@ -24,7 +24,7 @@ import android.os.Bundle;
 public class AndroidGPACalculatorActivity extends Activity {
 	private CoursesDataSource coursesSource;
 	private AssignmentTypesSource typeSource;
-	
+	private GradesDataSource gradeSource;
 	
     /** Called when the activity is first created. */
     @Override
@@ -32,33 +32,26 @@ public class AndroidGPACalculatorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        gradeSource = new GradesDataSource(this);
+        gradeSource.open();
+        
+        List<Grade> allGrades = gradeSource.getAllGrades();
+        
+        for(int i = 0; i < allGrades.size(); ++i){
+        	Grade g = allGrades.get(i);
+        	System.out.println("Course ID: " + g.getCourse_id() + " Type ID: " + g.getAssignment_type_id() + " Name:" +
+        			g.getName() + " Grade: " + g.getGrade() + " Max_Grade: " + g.getMax_grade());
+        }
+        
+        gradeSource.close();
+        
+        
         /* Starts the home screen activity */
         Intent toHome = new Intent(this, HomeActivity.class);
         this.startActivity(toHome);
         
         
         // Below is test code to use while the list Courses activity is not functional
-        coursesSource = new CoursesDataSource(this);
-        coursesSource.open();
-        typeSource = new AssignmentTypesSource(this);
-        typeSource.open();
-        List<Course> courses = coursesSource.getAllCourses();
-        
-        for (int i = 0; i < courses.size(); ++i){
-        	System.out.println("Course Info: " + courses.get(i).toString());
-        	
-        	// Assignment Types
-        	
-        	int courseID = courses.get(i).getId();
-        	
-        	List<AssignmentType> types = typeSource.getAllAssignmentTypesForCourse(courseID);
-        	
-        	for (int j = 0; j < types.size(); ++j){
-        		System.out.println("\t" + types.get(j).toString());
-        	}
-        }
-        typeSource.close();
-        coursesSource.close();
         
       /*  
        coursesSource = new CoursesDataSource(this);

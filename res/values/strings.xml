@@ -46,6 +46,7 @@
     <string name="lbl_home_button">Home</string>
     <string name="add_assignment_type">Add Assignment Type</string>
     <string name="back">Back</string>
+    <string name="lbl_add_grade">Add Grade</string>
     
 
 </resources>

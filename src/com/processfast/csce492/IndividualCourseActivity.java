@@ -5,7 +5,10 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,6 +23,8 @@ public class IndividualCourseActivity extends Activity implements
 
 	Course course;
 	List<AssignmentType> types;
+	
+	int typePosition;
 
 	LinearLayout typeLayout;
 	Button addType, back;
@@ -80,10 +85,18 @@ public class IndividualCourseActivity extends Activity implements
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+		case R.integer.ASSIGNMENT_TYPE_CREATE:
+			if (resultCode == RESULT_OK) {
+				update();
+			}
+			break;
+		}
 	}
 	public void update(){
 		// For each assignment type, generate a view 
 		for (int i = 0; i < types.size(); ++i){
+			typePosition = i;
 			LinearLayout individual = new LinearLayout(this);
 			individual.setOrientation(LinearLayout.VERTICAL);
 			TextView typeAverage = new TextView(this);
@@ -101,9 +114,27 @@ public class IndividualCourseActivity extends Activity implements
 				gradeView.setTextAppearance(this, android.R.style.TextAppearance_Small);
 				gradeView.setText(grades.get(i).toString());
 				gradeView.setTag(grades.get(i));
+				individual.addView(gradeView);
 			}
-			
+			gradeSource.close();
 			typeLayout.addView(individual);
+			
+			Button addGrade = new Button(this);
+			addGrade.setText(R.string.lbl_add_grade);
+			addGrade.setTag(types.get(i));
+			addGrade.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+			addGrade.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent a = new Intent(getApplicationContext(), AddGradeActivity.class);
+					a.putExtra("courseID", course.getId());
+					a.putExtra("assignmentTypeID", ((AssignmentType)v.getTag()).getId());
+					startActivityForResult(a, R.integer.GRADE_ADD);
+				}
+			});
+			
+			typeLayout.addView(addGrade);
 		}
 	}
 }

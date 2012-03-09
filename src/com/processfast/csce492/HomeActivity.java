@@ -32,6 +32,8 @@ public class HomeActivity extends Activity implements View.OnClickListener {
 			break;
 		case R.id.bAddGrade:
 			/**Start AddGradeActivity.java**/
+			i = new Intent(this, AddGradeActivity.class);
+			startActivity(i);
 			break;		
 		case R.id.bViewStatistics:
 			/**Start StatisticsActivity.java**/
