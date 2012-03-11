@@ -130,6 +130,9 @@ public class CourseListActivity extends Activity implements
 
 		source.open();
 		courseList = source.getAllCourses();
+		for (int i = 0; i < courseList.size(); ++i){
+			courseList.get(i).setContext(this);
+		}
 
 		adapter = new ArrayAdapter<Course>(this,
 				android.R.layout.simple_list_item_1, android.R.id.text1,
@@ -159,5 +162,10 @@ public class CourseListActivity extends Activity implements
 		registerForContextMenu(list);
 		source.close();
 
+	}
+	@Override
+	public void onResume(){
+		super.onResume();
+		updateList();
 	}
 }

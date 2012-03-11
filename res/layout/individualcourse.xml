@@ -24,6 +24,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
+            android:id="@+id/layout_weights"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/typelayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -70,14 +70,29 @@ public class GradesDataSource {
 	 * @param grade
 	 *            The grade to be deleted
 	 */
-	public void deleteGrade(Grade grade) {
-		int id = grade.getId();
+	public void deleteGrade(int id) {
 		Log.i("Grade", "Grade # " + id + " is deleted.");
 
 		database.delete(DatabaseHelper.gradesTable, DatabaseHelper.colGradeID
 				+ " = " + id, null);
 	}
 
+	/**
+	 * This method returns the grade with an id
+	 * @author Byron Alleman
+	 * @param grade_id the id of the grade to retrieve
+	 * @return the grade object with that id
+	 */
+	public Grade getGradeByID(int grade_id){
+		Grade g = new Grade();
+		Cursor cursor = database.query(DatabaseHelper.gradesTable, 
+				allColumns, DatabaseHelper.colGradeID + " = " + grade_id, 
+				null, null, null, DatabaseHelper.colName);
+		cursor.moveToFirst();
+		g = cursorToGrade(cursor);
+		cursor.close();
+		return g;
+	}
 
 	/**
 	 * Returns a list of all grades with a given assignment type

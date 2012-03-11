@@ -3,6 +3,8 @@ package com.processfast.csce492;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +30,8 @@ public class AddGradeActivity extends Activity implements OnClickListener {
 	Course course = new Course();
 	AssignmentType type = new AssignmentType();
 
+	AlertDialog errorMessage;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,28 +43,57 @@ public class AddGradeActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		
-		case R.id.btn_AG_Submit:
-			selectedName = etName.getText().toString();
-			numGrade = Long.valueOf(etGradeNum.getText().toString());
-			max_grade = Long.valueOf(etGradeDen.getText().toString());
-			courseID = course.getId();
-			typeID = type.getId();
 
-			// Add the grade to the database
-			gradeSource.open();
-			gradeSource.createGrade(typeID, courseID, max_grade, selectedName,
-					numGrade);
-			gradeSource.close();
-			Intent returnIntent = new Intent();
-			setResult(RESULT_OK, returnIntent);
-			finish();
+		case R.id.btn_AG_Submit:
+			if (validateGrade()) {
+				selectedName = etName.getText().toString();
+				numGrade = Long.valueOf(etGradeNum.getText().toString());
+				max_grade = Long.valueOf(etGradeDen.getText().toString());
+				courseID = course.getId();
+				typeID = type.getId();
+
+				// Add the grade to the database
+				gradeSource.open();
+				gradeSource.createGrade(typeID, courseID, max_grade,
+						selectedName, numGrade);
+				gradeSource.close();
+				Intent returnIntent = new Intent();
+				setResult(RESULT_OK, returnIntent);
+				finish();
+			}
 			break;
 
 		case R.id.btn_AG_Cancel:
 			finish();
 			break;
 		}
+	}
+
+	private boolean validateGrade() {
+		String errors = "You have made the following error(s): \n";
+		boolean inputError = false;
+
+		// Ensure assignment name is not empty
+		if (etName.getText().toString().length() == 0) {
+			errors += "-Assignment name cannot be left blank.\n";
+			inputError = true;
+		}
+
+		// Ensure grade isn't blank
+		if (etGradeNum.getText().toString().length() == 0) {
+			errors += "- Grade numerator cannot be left blank.\n";
+		}
+		// Ensure max grade isn't blank
+		if (etGradeDen.getText().toString().length() == 0) {
+			errors += "- Grade denominator cannot be left blank.\n";
+		}
+
+		if (inputError == true) {
+			errorMessage.setMessage(errors);
+			errorMessage.show();
+			return false;
+		}
+		return true;
 	}
 
 	public void setupCourseSpinner() {
@@ -85,10 +118,11 @@ public class AddGradeActivity extends Activity implements OnClickListener {
 		}
 		spCourse.setAdapter(adapter1);
 		spCourse.setSelection(defaultPos);
-		if(getIntent().getIntExtra("courseID", -1) > 0){
-			updateAssignmentTypeSelection(getIntent().getIntExtra("courseID", -1));
+		if (getIntent().getIntExtra("courseID", -1) > 0) {
+			updateAssignmentTypeSelection(getIntent().getIntExtra("courseID",
+					-1));
 		}
-		
+
 		spCourse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> adapter1, View v, int i,
 					long lng) {
@@ -105,23 +139,22 @@ public class AddGradeActivity extends Activity implements OnClickListener {
 	}
 
 	public void updateAssignmentTypeSelection(int courseID) {
-		
+
 		typeSource = new AssignmentTypesSource(this);
 		typeSource.open();
 
 		int defaultPos = 0;
-		
+
 		types = typeSource.getAllAssignmentTypesForCourse(courseID);
 		int size = types.size();
 		final ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<CharSequence>(
 				this, android.R.layout.simple_spinner_item);
-		
+
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		
 		for (int i = 0; i < size; i++) {
-			if (types.get(i).getId() == getIntent().getIntExtra("assignmentTypeID",
-					-1)) {
+			if (types.get(i).getId() == getIntent().getIntExtra(
+					"assignmentTypeID", -1)) {
 				defaultPos = i;
 			}
 			adapter2.add(types.get(i).getName());
@@ -160,6 +193,14 @@ public class AddGradeActivity extends Activity implements OnClickListener {
 		coursesSource = new CoursesDataSource(this);
 
 		setupCourseSpinner();
+
+		errorMessage = new AlertDialog.Builder(this).create();
+		errorMessage.setTitle("Input error!");
+		errorMessage.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				return;
+			}
+		});
 
 	}
 }
