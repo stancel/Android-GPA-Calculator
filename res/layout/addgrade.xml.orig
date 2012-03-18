@@ -99,7 +99,11 @@
                 android:id="@+id/et_AG_numirator"
                 android:layout_width="75dp"
                 android:layout_height="fill_parent"
+<<<<<<< HEAD
+                android:inputType="number" />
+=======
                 android:inputType="numberDecimal" />
+>>>>>>> byron/master
 
             <TextView
                 android:id="@+id/textview1"
@@ -112,7 +116,11 @@
                 android:id="@+id/et_AG_denominator"
                 android:layout_width="75dp"
                 android:layout_height="fill_parent"
+<<<<<<< HEAD
+                android:inputType="number"/>
+=======
                 android:inputType="numberDecimal"/>
+>>>>>>> byron/master
         </LinearLayout>
 
         <Button

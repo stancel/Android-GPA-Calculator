@@ -1,5 +1,6 @@
 package com.processfast.csce492;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import android.os.Parcel;
@@ -212,38 +213,42 @@ public class GradingScale implements Parcelable {
 
 	};
 	
-	public String getLetterGrade(float g){
-		if(g > a){
+	public String getLetterGrade(double e){
+		
+		BigDecimal trimmedGrade = new BigDecimal(e);
+		trimmedGrade = trimmedGrade.setScale(2, BigDecimal.ROUND_UP);
+		e = trimmedGrade.doubleValue();
+		if(e >= a){
 			return "A";
 		}
-		else if(a_minus > 0 && g > a_minus){
+		else if(a_minus > 0 && e >= a_minus){
 			return "A-";
 		}
-		else if(b_plus > 0 && g > b_plus){
+		else if(b_plus > 0 && e >= b_plus){
 			return "B+";
 		}
-		else if(g > b){
+		else if(e >= b){
 			return "B";
 		}
-		else if(b_minus > 0 && g > b_minus){
+		else if(b_minus > 0 && e >= b_minus){
 			return "B-";
 		}
-		else if(c_plus > 0 && g > c_plus){
+		else if(c_plus > 0 && e >= c_plus){
 			return "C+";
 		}
-		else if(g > c){
+		else if(e >= c){
 			return "C";
 		}
-		else if(c_minus > 0 && g > c_minus){
+		else if(c_minus > 0 && e >= c_minus){
 			return "C-";
 		}
-		else if(d_plus > 0 && g > d_plus){
+		else if(d_plus > 0 && e >= d_plus){
 			return "D+";
 		}
-		else if(g > d){
+		else if(e >= d){
 			return "D";
 		}
-		else if(d_minus > 0 && g > d_minus){
+		else if(d_minus > 0 && e >= d_minus){
 			return "D-";
 		}
 		else return "F";

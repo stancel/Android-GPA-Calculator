@@ -55,7 +55,7 @@ public class GradesDataSource {
 		long insertId = database.insert(DatabaseHelper.gradesTable, null,
 				values);
 
-		Log.i("Grade", "Grade \"" + name + "\" added to database.");
+		Log.i("Grade", "Grade \"" + name + "\" added to database with insert id of "+ insertId +".");
 		Cursor cursor = database.query(DatabaseHelper.gradesTable, allColumns,
 				DatabaseHelper.colGradeID + " = " + insertId, null, null, null,
 				null);
@@ -70,14 +70,29 @@ public class GradesDataSource {
 	 * @param grade
 	 *            The grade to be deleted
 	 */
-	public void deleteGrade(Grade grade) {
-		int id = grade.getId();
+	public void deleteGrade(int id) {
 		Log.i("Grade", "Grade # " + id + " is deleted.");
 
 		database.delete(DatabaseHelper.gradesTable, DatabaseHelper.colGradeID
 				+ " = " + id, null);
 	}
 
+	/**
+	 * This method returns the grade with an id
+	 * @author Byron Alleman
+	 * @param grade_id the id of the grade to retrieve
+	 * @return the grade object with that id
+	 */
+	public Grade getGradeByID(int grade_id){
+		Grade g = new Grade();
+		Cursor cursor = database.query(DatabaseHelper.gradesTable, 
+				allColumns, DatabaseHelper.colGradeID + " = " + grade_id, 
+				null, null, null, DatabaseHelper.colName);
+		cursor.moveToFirst();
+		g = cursorToGrade(cursor);
+		cursor.close();
+		return g;
+	}
 
 	/**
 	 * Returns a list of all grades with a given assignment type
@@ -116,6 +131,19 @@ public class GradesDataSource {
 		}
 		cursor.close();
 		return courses;
+	}
+	public List<Grade> getAllGrades() {
+		List<Grade> courses = new ArrayList<Grade>();
+		Cursor cursor = database.query(DatabaseHelper.gradesTable, allColumns, 
+				null, null, null, null, DatabaseHelper.colGradeDate);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			courses.add(cursorToGrade(cursor));
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return courses;
+
 	}
 
 	/**

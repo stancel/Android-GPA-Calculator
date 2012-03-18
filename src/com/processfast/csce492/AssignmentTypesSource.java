@@ -78,9 +78,7 @@ public class AssignmentTypesSource {
 	 * @param course
 	 *            The AssignmentType to be deleted
 	 */
-	public void deleteAssignmentType(AssignmentType type){
-		int id = type.getId();
-		Log.i("AssignmentType", "Assignment Type \"" + type.getName() + "\" deleted from the database.");
+	public void deleteAssignmentType(int id){
 		database.delete(DatabaseHelper.assignmentTypesTable, DatabaseHelper.colTypeID + " = " + id, null);
 	}
 	
@@ -103,6 +101,23 @@ public class AssignmentTypesSource {
 		}
 		cursor.close();
 		return types;
+	}
+	
+	/**
+	 * This method returns the assignment type with an id
+	 * @author Byron Alleman
+	 * @param type_id the id of the assignment type to retrieve
+	 * @return the AssignmentType object with that id
+	 */
+	public AssignmentType getAssignmentTypeByID(int type_id){
+		AssignmentType type = new AssignmentType();
+		Cursor cursor = database.query(DatabaseHelper.assignmentTypesTable, 
+				allColumns, DatabaseHelper.colTypeID + " = " + type_id, 
+				null, null, null, DatabaseHelper.colName);
+		cursor.moveToFirst();
+		type = cursorToAssignmentType(cursor);
+		cursor.close();
+		return type;
 	}
 	
 	/**
