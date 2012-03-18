@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, AndroidGPACalculatorActivity!</string>
+    <string name="app_name">Android GPA Calculator</string>
+    <string name="add_course">Add Course:</string>
+    <string name="lbl_course_title">Course Title:</string>
+    <string name="lbl_dept_abr">Department Abbreviation:</string>
+    <string name="lbl_course_number">Course Number:</string>
+    <string name="lbl_teacher_name">Teacher Name:</string>
+    <string name="lbl_credit_hours">Credit Hours:</string>
+    <string name="lbl_grading_style">Grading Style:</string>
+    <string name="lbl_percentage">Percentage</string>
+    <string name="lbl_points">Points</string>
+    <string name="lbl_assignment_types">Assignment Types:</string>
+    <string name="none">none</string>
+    <string name="lbl_add_assignment_type">Add Assignment Type</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="lblAddAssignmentType">Add Assignment Type for </string>
+    <string name="empty">null</string>
+    <string name="colon">:</string>
+    <string name="lName">Name:</string>
+    <string name="lWeight">Weight:</string>
+    <string name="lPercent">%</string>
+    <string name="gradingscale">"Grading Scale for "</string>
+    <string name="scale_message">Leave field blank if letter grade is not applicable to your institution\'s grading system.</string>
+    <string name="percent_and_up">% and up</string>
+    <string name="a">A </string>
+    <string name="a_minus">A- </string>
+    <string name="b_plus">B+ </string>
+    <string name="b">B </string>
+    <string name="b_minus">B- </string>
+    <string name="c_plus">C+ </string>
+    <string name="c">C </string>
+    <string name="c_minus">C- </string>
+    <string name="d_plus">D+ </string>
+    <string name="d">D </string>
+    <string name="d_minus">D- </string>
+    <string name="scale_setup">Grading Scale: </string>
+    <string name="set_up">Set Up</string>
+<<<<<<< HEAD
+    <string name="home">Home</string>
+
+=======
+    <string name="lPoints">points</string>
+    <string name="new_course">new course</string>
+    <string name="lbl_courses">Courses:</string>
+    <string name="lbl_add_course_button">Add Course</string>
+    <string name="lbl_home_button">Home</string>
+>>>>>>> 9ac4fceffeabe3f9dd6281a212513279d5c8bd7f
+    
+
+</resources>
