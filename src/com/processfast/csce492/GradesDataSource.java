@@ -145,6 +145,19 @@ public class GradesDataSource {
 		return courses;
 
 	}
+	public List<Grade> getAllGrades() {
+		List<Grade> courses = new ArrayList<Grade>();
+		Cursor cursor = database.query(DatabaseHelper.gradesTable, allColumns, 
+				null, null, null, null, DatabaseHelper.colGradeDate);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			courses.add(cursorToGrade(cursor));
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return courses;
+
+	}
 
 	/**
 	 * This method returns the Grade object that a passed Cursor object points
