@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="hello">Hello World, AndroidGPACalculatorActivity!</string>
     <string name="app_name">Android GPA Calculator</string>
-    <string name="add_course">Add Course:</string>
     <string name="lbl_course_title">Course Title:</string>
     <string name="lbl_dept_abr">Department Abbreviation:</string>
     <string name="lbl_course_number">Course Number:</string>
@@ -17,5 +16,11 @@
     <string name="lbl_add_assignment_type">Add Assignment Type</string>
     <string name="cancel">Cancel</string>
     <string name="submit">Submit</string>
+    <string name="pass_fail">Pass or Fail</string>
+    <string name="view_course">View Courses</string>
+    <string name="add_grade">Add Grade</string>
+    <string name="view_stats">View Statistics</string>
+    <string name="add_course">Add Course</string>
+    <style name="GPA" android:id="@+id/style1" android:layout_width="wrap_content" android:layout_height="wrap_content"></style>
 
 </resources>

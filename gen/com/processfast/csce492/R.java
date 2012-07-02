@@ -14,43 +14,47 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int addCourseText=0x7f050002;
-        public static final int bAddCourse=0x7f050022;
-        public static final int bAddGrade=0x7f050023;
-        public static final int bViewCourses=0x7f050021;
-        public static final int bViewStatistics=0x7f050024;
-        public static final int btn_add_assignment_type=0x7f05001b;
-        public static final int btn_cancel=0x7f05001d;
-        public static final int btn_submit=0x7f05001f;
-        public static final int field_assignment_types=0x7f050019;
-        public static final int field_course_number=0x7f05000b;
-        public static final int field_course_title=0x7f050005;
-        public static final int field_credit_hours=0x7f050011;
-        public static final int field_dept_abr=0x7f050008;
-        public static final int field_teacher_name=0x7f05000e;
-        public static final int lbl_assignment_types=0x7f050018;
-        public static final int lbl_course_number=0x7f05000a;
-        public static final int lbl_course_title=0x7f050004;
-        public static final int lbl_credit_hours=0x7f050010;
-        public static final int lbl_dept_abr=0x7f050007;
-        public static final int lbl_grading_style=0x7f050013;
-        public static final int lbl_teacher_name=0x7f05000d;
-        public static final int linearLayout1=0x7f050003;
-        public static final int linearLayout10=0x7f05001c;
-        public static final int linearLayout2=0x7f050006;
-        public static final int linearLayout3=0x7f050009;
-        public static final int linearLayout4=0x7f05000c;
-        public static final int linearLayout5=0x7f05000f;
-        public static final int linearLayout6=0x7f050001;
-        public static final int linearLayout7=0x7f050012;
-        public static final int linearLayout8=0x7f050017;
-        public static final int linearLayout9=0x7f05001a;
-        public static final int radioGroup1=0x7f050014;
-        public static final int radio_percentage=0x7f050015;
-        public static final int radio_points=0x7f050016;
-        public static final int relativeLayout1=0x7f05001e;
-        public static final int scrollView1=0x7f050000;
-        public static final int tvTitle=0x7f050020;
+        public static final int addCourseText=0x7f060002;
+        public static final int bAddCourse=0x7f060026;
+        public static final int bAddGrade=0x7f060027;
+        public static final int bViewCourses=0x7f060025;
+        public static final int bViewStatistics=0x7f060028;
+        public static final int btnListAddCourse=0x7f060022;
+        public static final int btnListHome=0x7f060023;
+        public static final int btn_add_assignment_type=0x7f06001b;
+        public static final int btn_cancel=0x7f06001d;
+        public static final int btn_submit=0x7f06001f;
+        public static final int field_assignment_types=0x7f060019;
+        public static final int field_course_number=0x7f06000b;
+        public static final int field_course_title=0x7f060005;
+        public static final int field_credit_hours=0x7f060011;
+        public static final int field_dept_abr=0x7f060008;
+        public static final int field_teacher_name=0x7f06000e;
+        public static final int lbl_assignment_types=0x7f060018;
+        public static final int lbl_course_number=0x7f06000a;
+        public static final int lbl_course_title=0x7f060004;
+        public static final int lbl_credit_hours=0x7f060010;
+        public static final int lbl_dept_abr=0x7f060007;
+        public static final int lbl_grading_style=0x7f060013;
+        public static final int lbl_teacher_name=0x7f06000d;
+        public static final int linearLayout1=0x7f060003;
+        public static final int linearLayout10=0x7f06001c;
+        public static final int linearLayout2=0x7f060006;
+        public static final int linearLayout3=0x7f060009;
+        public static final int linearLayout4=0x7f06000c;
+        public static final int linearLayout5=0x7f06000f;
+        public static final int linearLayout6=0x7f060001;
+        public static final int linearLayout7=0x7f060012;
+        public static final int linearLayout8=0x7f060017;
+        public static final int linearLayout9=0x7f06001a;
+        public static final int radioGroup1=0x7f060014;
+        public static final int radio_percentage=0x7f060015;
+        public static final int radio_points=0x7f060016;
+        public static final int relativeLayout1=0x7f06001e;
+        public static final int scrollView1=0x7f060000;
+        public static final int tvCourseDisplay=0x7f060021;
+        public static final int tvListHeader=0x7f060020;
+        public static final int tvTitle=0x7f060024;
     }
     public static final class layout {
         public static final int addassignmenttype=0x7f030000;
@@ -70,21 +74,28 @@ public final class R {
         public static final int statistics=0x7f03000e;
     }
     public static final class string {
-        public static final int add_course=0x7f040002;
+        public static final int add_course=0x7f040013;
+        public static final int add_grade=0x7f040011;
         public static final int app_name=0x7f040001;
-        public static final int cancel=0x7f04000e;
+        public static final int cancel=0x7f04000d;
         public static final int hello=0x7f040000;
-        public static final int lbl_add_assignment_type=0x7f04000d;
-        public static final int lbl_assignment_types=0x7f04000b;
-        public static final int lbl_course_number=0x7f040005;
-        public static final int lbl_course_title=0x7f040003;
-        public static final int lbl_credit_hours=0x7f040007;
-        public static final int lbl_dept_abr=0x7f040004;
-        public static final int lbl_grading_style=0x7f040008;
-        public static final int lbl_percentage=0x7f040009;
-        public static final int lbl_points=0x7f04000a;
-        public static final int lbl_teacher_name=0x7f040006;
-        public static final int none=0x7f04000c;
-        public static final int submit=0x7f04000f;
+        public static final int lbl_add_assignment_type=0x7f04000c;
+        public static final int lbl_assignment_types=0x7f04000a;
+        public static final int lbl_course_number=0x7f040004;
+        public static final int lbl_course_title=0x7f040002;
+        public static final int lbl_credit_hours=0x7f040006;
+        public static final int lbl_dept_abr=0x7f040003;
+        public static final int lbl_grading_style=0x7f040007;
+        public static final int lbl_percentage=0x7f040008;
+        public static final int lbl_points=0x7f040009;
+        public static final int lbl_teacher_name=0x7f040005;
+        public static final int none=0x7f04000b;
+        public static final int pass_fail=0x7f04000f;
+        public static final int submit=0x7f04000e;
+        public static final int view_course=0x7f040010;
+        public static final int view_stats=0x7f040012;
+    }
+    public static final class style {
+        public static final int GPA=0x7f050000;
     }
 }

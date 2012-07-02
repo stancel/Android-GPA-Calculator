@@ -1,8 +1,8 @@
 package com.processfast.csce492;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+// import android.content.DialogInterface;
+// import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +19,13 @@ public class HomeActivity extends Activity implements OnClickListener {
 		init();
 	}
 
+//	@Override
+//	public void onClick(DialogInterface dialog, int which) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+	
+	
 	//This is an onClick method that is called when one of the buttons is clicked.
 	public void onClick(View view) {
 		//This is the switch case which picks the button that was pressed by its id.
@@ -38,6 +45,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		}
 	}
 	
+	
+	
+	
 	//This is a method to initialize all the variables.
 	public void init() {
 		bViewCourses = (Button) findViewById(R.id.bViewCourses);
@@ -50,4 +60,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		bAddGrade.setOnClickListener(this);
 		bViewStatistics.setOnClickListener(this);
 	}
+
+	
+
 }
